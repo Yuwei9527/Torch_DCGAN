@@ -51,7 +51,7 @@ def inference_dcgan_B(netG, noise, final_result_dir, model_name, repeat, index):
 #%%
 # config
 final_result_dir = 'C:/Users/aiuser/Desktop/lai/DCGAN-PyTorch-master/exp_1/inference_result/'
-root_all_weight = 'C:/Users/aiuser/Desktop/lai/DCGAN-PyTorch-master/exp_1/model_train_flow/'
+root_all_weight = 'C:/Users/aiuser/Desktop/lai/DCGAN-PyTorch-master/exp_1/model/'
 load_model_path = os.listdir(root_all_weight)
 
 repeat = 2
