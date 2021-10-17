@@ -33,7 +33,7 @@ def inference_dcgan_A(load_model_path, num_output):
 
 def inference_dcgan_B(netG, noise, final_result_dir, model_name, repeat, index):
     # create final_result_dir/repeat/
-    os.makedirs(final_result_dir+'/'+repeat, exist_ok=True)
+    os.makedirs(final_result_dir+'/'+str(repeat), exist_ok=True)
     
     # Turn off gradient calculation to speed up the process.
     with torch.no_grad():
@@ -45,7 +45,7 @@ def inference_dcgan_B(netG, noise, final_result_dir, model_name, repeat, index):
         # plt.title("Generated Images")
         # plt.imshow(np.transpose(vutils.make_grid(generated_img, padding=2, normalize=True), (1,2,0)))
         plt.imshow(np.transpose(vutils.make_grid(generated_img, padding=1, normalize=True)), interpolation='nearest')
-        plt.savefig(final_result_dir+'/'+model_name+'/'+repeat+'/'+str(index)+'.png',bbox_inches='tight',dpi=25,pad_inches=0.0)
+        plt.savefig(final_result_dir+'/'+model_name+'/'+str(repeat)+'/'+str(index)+'.png',bbox_inches='tight',dpi=25,pad_inches=0.0)
         # fig.show()
 
 #%%
@@ -71,7 +71,7 @@ for i in range(0, len(load_model_path)):
             list_noise_np = list(noise_np)
               
             if list_noise_np != tmp:
-                inference_dcgan_B(netG, noise, final_result_dir, load_model_path[i], repeat, countor_output)
+                inference_dcgan_B(netG, noise, final_result_dir, load_model_path[i], countor_repeat, countor_output)
                 tmp += list_noise_np
                 countor_output += 1
             else:
