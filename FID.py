@@ -136,20 +136,17 @@ def torch_load_all_img(mode, root, repeat, batch_size):
     # print('FID: %.3f' % fid)
 
 #%%
-# 真實vs. 虛擬 -dcgan
+# 真實vs. 虛擬 -dcgan 
+# work for muti_models
 root_A = 'C:/Users/aiuser/Desktop/lai/DCGAN-PyTorch-master/gan_compare_performance/reality_defect/orange/'
 root_B = 'C:/Users/aiuser/Desktop/lai/DCGAN-PyTorch-master/gan_compare_performance/sampling_DCGAN_do_process/'
-
 
 all_model = []
 all_model_avg = []
 
-
-
 temp = os.listdir(root_B)# model_all_models
 for j in tqdm(range(0, len(temp))):
     real_data = torch_load_all_img(-1, root_A, j, 8)# when mode==-1, j do nothing
-    
     sample_100_times = []
     for i in range(1, 6):
         fake = dset.ImageFolder(root_B+'/'+temp[j]+'/'+str(i)+'/',
