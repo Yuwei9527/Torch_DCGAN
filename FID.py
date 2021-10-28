@@ -25,14 +25,8 @@ import os
 from tqdm import tqdm
 import statistics
 
-# config = tf.compat.v1.ConfigProto(allow_soft_placement=True)
-# config.gpu_options.per_process_gpu_memory_fraction = 0.95
-# tf.compat.v1.keras.backend.set_session(tf.compat.v1.Session(config=config))
-
 config = tf.ConfigProto(allow_soft_placement=True)
-
 gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.95)
-
 config.gpu_options.allow_growth = True
 sess = tf.Session(config=config)
 
@@ -163,19 +157,9 @@ for j in tqdm(range(0, len(temp))):
             # Transfer data tensor to GPU/CPU (device)
             fake_data = data[0].to(device)
             fake_data = fake_data.reshape(fake_data.shape[0], fake_data.shape[2], fake_data.shape[3], fake_data.shape[1])
-        
-    # print('Loaded', real_data.shape, fake_data.shape)
-    # convert integer to floating point values
-    # images1 = real_data.astype('float32')
-    # images2 = fake_data.astype('float32')
     # resize images
         images1 = scale_images(real_data.cpu(), (299,299,3))
         images2 = scale_images(fake_data.cpu(), (299,299,3))
-    # print('Scaled', images1.shape, images2.shape)
-    # pre-process images
-    # images1 = preprocess_input(images1)
-    # images2 = preprocess_input(images2)
-    # calculate fid
     # round
         fid = round(calculate_fid(model, images1, images2), 3)
         sample_100_times.append(fid)
