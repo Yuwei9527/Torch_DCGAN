@@ -12,5 +12,4 @@
 生成影像後必須要衡量影像的品質，然而除了目視檢查外，亦可以使用FID進行評估，但是僅做一次是不夠的，因此嘗試進行重複實驗，以降低實驗變異。最好組內變異越小越好(真實vs. 真實)，組外變異越大越好(真實vs. 虛擬)
 
 ### 參考網址
-https://github.com/Natsu6767/DCGAN-PyTorch  
-https://machinelearningmastery.com/how-to-implement-the-frechet-inception-distance-fid-from-scratch/
+https://github.com/Natsu6767/DCGAN-PyTorch
