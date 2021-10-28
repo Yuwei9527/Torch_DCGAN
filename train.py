@@ -209,7 +209,7 @@ for epoch in range(params['nepochs']):
             fake_data = netG(fixed_noise).detach().cpu()
             save_img_on_each_iters(fake_data, epoch)
         img_list.append(vutils.make_grid(fake_data, padding=2, normalize=True))
-    if epoch % params['save_epoch'] == 0 :
+    if epoch % params['save_epoch'] == 0 or epoch==params['nepochs']:
         with torch.no_grad():
             fake_data = netG(fixed_noise).detach().cpu()
             save_img_on_each_iters(fake_data, epoch)
